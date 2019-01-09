@@ -17,7 +17,7 @@ lines = f.readlines()
 pre_time = -1
 pre_speed = -1
 
-ma_size = 6
+ma_size = 1
 count = 0
 ma_array = [0] * ma_size
 
