@@ -17,6 +17,7 @@ llines = lf.readlines()
 
 firstAccTime = int((alines[0].split(", "))[0])
 locIndex = 0
+targetLocationTime = 0
 targetSpeed = 0
 targetTimeNext = 0
 
@@ -32,6 +33,7 @@ while(locIndex < len(llines) - 1):
         locIndex += 1
         continue
     else:
+        targetLocationTime = locTime
         targetSpeed = float(parsed[2])
         targetTimeNext = locTimeNext
         break
@@ -54,14 +56,15 @@ for line in alines:
             parsedNext = llines[locIndex+1].split(", ")
             locTime = int(parsed[0])
             locTimeNext = int(parsedNext[0])
-            if (locTimeNext - accTime < 0):
+            if (locTimeNext < accTime):
                 locIndex += 1
                 continue
             else:
+                targetLocationTime = locTime
                 targetSpeed = float(parsed[2])
                 targetTimeNext = locTimeNext
                 break
 
-    print(str(groupIndex)+","+accParsed[0]+","+str(x)+","+str(y)+","+str(z)+","+str(scala)+","+str(targetSpeed))
+    print(str(groupIndex)+","+accParsed[0]+","+str(x)+","+str(y)+","+str(z)+","+str(scala)+","+str(targetLocationTime)+","+str(targetSpeed))
     
         
